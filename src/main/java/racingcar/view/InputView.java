@@ -9,9 +9,9 @@ public class InputView {
         return Validator.validateCarNames(Console.readLine());
     }
 
-    public String getNumber(){
+    public int getNumber(){
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Console.readLine();
+        return Validator.validateNumber(Console.readLine());
     }
 
     public static class Validator {
@@ -25,6 +25,26 @@ public class InputView {
                 throw new IllegalArgumentException();
             }
             return message;
+        }
+
+        // 시도 횟수 입력 검증
+        public static int validateNumber(String number) {
+            return validateIsInRange(validateIsInt(number));
+        }
+
+        public static int validateIsInRange(int number) {
+            if (number <= 0) {
+                throw new IllegalArgumentException();
+            }
+            return number;
+        }
+
+        public static int validateIsInt(String number) {
+            try {
+                return Integer.parseInt(number);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 }
