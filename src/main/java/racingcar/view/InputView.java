@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.enums.ErrorCode;
 
 public class InputView {
 
@@ -22,7 +23,7 @@ public class InputView {
 
         private static String validateBlank(String message) {
             if (message.isBlank()) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorCode.INPUT_IS_NULL.getErrorMessage());
             }
             return message;
         }
@@ -34,7 +35,7 @@ public class InputView {
 
         public static int validateIsInRange(int number) {
             if (number <= 0) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorCode.INPUT_IS_NOT_IN_RANGE.getErrorMessage());
             }
             return number;
         }
@@ -43,7 +44,7 @@ public class InputView {
             try {
                 return Integer.parseInt(number);
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorCode.INPUT_IS_NOT_NUMBER.getErrorMessage());
             }
         }
     }
