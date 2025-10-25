@@ -12,10 +12,11 @@ public class Car {
         this.position = 0;
     }
 
-    public void moveForward() {
+    public Car moveForward() {
         if (isFourOrMore()) {
             position++;
         }
+        return this;
     }
 
     public boolean isFourOrMore() {
