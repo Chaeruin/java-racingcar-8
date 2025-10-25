@@ -1,9 +1,9 @@
-package racingcar.config;
+package racingcar.service;
 
 import java.util.List;
 import racingcar.domain.Car;
 
-public class GameConfig {
+public class RacingGame {
 
     public List<Car> createCars(List<String> carNames) {
         return carNames.stream()
