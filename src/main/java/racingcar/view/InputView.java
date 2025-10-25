@@ -15,6 +15,10 @@ public class InputView {
         return Validator.validateNumber(Console.readLine());
     }
 
+    public void consoleClose() {
+        Console.close();
+    }
+
     public static class Validator {
         // 자동차 이름 입력 검증
         public static String validateCarNames(String message) {

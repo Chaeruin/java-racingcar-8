@@ -19,12 +19,16 @@ public class GameController {
     }
 
     public void run() {
-        List<Car> cars = RacingGame.createCars(InputParser.parseCarNames(inputView.getCarNames()));
-        int number = inputView.getNumber();
-        // outputView.printStart();
-        executeRacing(number, cars);
-        List<String> winners = Judgment.getWinnersName(Judgment.getWinners(cars));
-        // outputView.printWinner(winners);
+        try {
+            List<Car> cars = RacingGame.createCars(InputParser.parseCarNames(inputView.getCarNames()));
+            int number = inputView.getNumber();
+            // outputView.printStart();
+            executeRacing(number, cars);
+            List<String> winners = Judgment.getWinnersName(Judgment.getWinners(cars));
+            // outputView.printWinner(winners);
+        } finally {
+            inputView.consoleClose();
+        }
     }
 
     private void executeRacing(int number, List<Car> cars) {
