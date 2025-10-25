@@ -13,7 +13,7 @@ public class GameController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    GameController(InputView inputView, OutputView outputView) {
+    public GameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
