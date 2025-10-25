@@ -16,7 +16,7 @@ public class InputParser {
             if (validateIsNameEmpty(carNames)) {
                 throw new IllegalArgumentException(ErrorCode.CAR_NAME_IS_NULL.getErrorMessage());
             }
-            if (validateIsNameLengthUnderFive(carNames)) {
+            if (!validateIsNameLengthUnderFive(carNames)) {
                 throw new IllegalArgumentException(ErrorCode.CAR_NAMES_LENGTH_OVER_FIVE.getErrorMessage());
             }
             if (validateIsDelimiterComma(carNames)) {
