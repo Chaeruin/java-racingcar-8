@@ -37,7 +37,7 @@ public class InputParser {
 
         public static boolean validateIsDelimiterComma(List<String> carNames) {
             return carNames.stream()
-                    .noneMatch(carName -> carName.startsWith(" ") || carName.endsWith(" "));
+                    .anyMatch(carName -> carName.startsWith(" ") || carName.endsWith(" "));
         }
     }
 }
