@@ -21,4 +21,12 @@ public class Car {
     public boolean isFourOrMore() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getPosition() {
+        return this.position;
+    }
 }
