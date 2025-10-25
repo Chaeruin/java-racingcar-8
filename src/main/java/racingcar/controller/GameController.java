@@ -22,10 +22,10 @@ public class GameController {
         try {
             List<Car> cars = RacingGame.createCars(InputParser.parseCarNames(inputView.getCarNames()));
             int number = inputView.getNumber();
-            // outputView.printStart();
+            outputView.printStart();
             executeRacing(number, cars);
             List<String> winners = Judgment.getWinnersName(Judgment.getWinners(cars));
-            // outputView.printWinner(winners);
+            outputView.printWinners(winners);
         } finally {
             inputView.consoleClose();
         }
@@ -34,7 +34,7 @@ public class GameController {
     private void executeRacing(int number, List<Car> cars) {
         for (int i = 0; i < number; i++) {
             RacingGame.executeOnce(cars);
-            // outputView.printExecutionOnce(cars);
+             outputView.printExecutionOnce(cars);
         }
     }
 }
