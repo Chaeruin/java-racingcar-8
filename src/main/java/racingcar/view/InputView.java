@@ -22,10 +22,13 @@ public class InputView {
     public static class Validator {
         // 자동차 이름 입력 검증
         public static String validateCarNames(String message) {
-            return validateBlank(message);
+            return validateNullOrBlank(message);
         }
 
-        private static String validateBlank(String message) {
+        private static String validateNullOrBlank(String message) {
+            if (message == null) {
+                throw new IllegalArgumentException(ErrorCode.INPUT_IS_NULL.getErrorMessage());
+            }
             if (message.isBlank()) {
                 throw new IllegalArgumentException(ErrorCode.INPUT_IS_NULL.getErrorMessage());
             }
