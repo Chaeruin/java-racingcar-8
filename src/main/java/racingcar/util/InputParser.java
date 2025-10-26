@@ -13,7 +13,10 @@ public class InputParser {
 
     public static class Validator {
         public static List<String> validateCarNames(List<String> carNames) {
-            if (validateIsNameEmpty(carNames)) {
+            if (carNames == null) {
+                throw new IllegalArgumentException(ErrorCode.CAR_NAME_IS_NULL.getErrorMessage());
+            }
+            if (validateIsNameNullOrEmpty(carNames)) {
                 throw new IllegalArgumentException(ErrorCode.CAR_NAME_IS_NULL.getErrorMessage());
             }
             if (!validateIsNameLengthUnderFive(carNames)) {
@@ -25,9 +28,9 @@ public class InputParser {
             return carNames;
         }
 
-        public static boolean validateIsNameEmpty(List<String> carNames) {
+        public static boolean validateIsNameNullOrEmpty(List<String> carNames) {
             return carNames.stream()
-                    .anyMatch(String::isEmpty);
+                    .anyMatch(carName -> carName == null || carName.isEmpty());
         }
 
         public static boolean validateIsNameLengthUnderFive(List<String> carNames) {
