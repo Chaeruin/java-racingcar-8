@@ -33,8 +33,8 @@ public class GameController {
 
     private void executeRacing(int number, List<Car> cars) {
         for (int i = 0; i < number; i++) {
-            RacingGame.executeOnce(cars);
-             outputView.printExecutionOnce(cars);
+            cars = RacingGame.executeOnce(cars);
+            outputView.printExecutionOnce(cars);
         }
     }
 }
