@@ -10,7 +10,7 @@ class CarTest {
     @Test
     @DisplayName("정상 이름으로 생성하면 이름과 초기 위치가 설정된다")
     void createCarWithValidName() {
-        Car car = new Car("pobi");
+        Car car = new Car("pobi", new RandomNumberGenerator());
 
         assertEquals("pobi", car.getName());
         assertEquals(0, car.getPosition());
@@ -19,7 +19,7 @@ class CarTest {
     @Test
     @DisplayName("moveForward일 때 위치가 1 증가한다")
     void moveBehavior() {
-        Car car = new Car("pobi");
+        Car car = new Car("pobi", new RandomNumberGenerator());
 
         car.moveForward();
         assertEquals(1, car.getPosition());

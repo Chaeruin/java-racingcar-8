@@ -2,12 +2,13 @@ package racingcar.service;
 
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.domain.RandomNumberGenerator;
 
 public class RacingGame {
 
     public static List<Car> createCars(List<String> carNames) {
         return carNames.stream()
-                .map(Car::new)
+                .map(carName -> new Car(carName, new RandomNumberGenerator()))
                 .toList();
     }
 

@@ -6,10 +6,12 @@ public class Car {
 
     private final String name;
     private int position;
+    private final NumberGenerator numberGenerator;
 
-    public Car(String name) {
+    public Car(String name, NumberGenerator numberGenerator) {
         this.name = name;
         this.position = 0;
+        this.numberGenerator = numberGenerator;
     }
 
     public Car moveForward() {
