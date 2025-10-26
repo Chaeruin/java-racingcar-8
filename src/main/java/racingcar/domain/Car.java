@@ -22,7 +22,7 @@ public class Car {
     }
 
     public boolean isFourOrMore() {
-        return Randoms.pickNumberInRange(0, 9) >= 4;
+        return numberGenerator.pick() >= 4;
     }
 
     public String getName() {
