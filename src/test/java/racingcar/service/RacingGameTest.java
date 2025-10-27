@@ -12,13 +12,14 @@ class RacingGameTest {
 
     private final NumberGenerator alwaysTrue = () -> 9;
     private final NumberGenerator alwaysFalse = () -> 0;
+    private final RacingGame racingGame = new RacingGame();
 
     @Test
     @DisplayName("createCars가 입력된 이름으로 자동차들을 생성하고 초기 위치는 0이다")
     void createCarsCreatesCarsWithGivenNamesAndZeroPosition() {
         List<String> names = List.of("pobi", "crong", "honux");
 
-        List<Car> cars = RacingGame.createCars(names);
+        List<Car> cars = racingGame.createCars(names);
 
         assertEquals(3, cars.size());
         assertEquals(names, cars.stream().map(Car::getName).toList());
@@ -31,7 +32,7 @@ class RacingGameTest {
         Car pobi = new Car("pobi", alwaysTrue);
         Car crong = new Car("crong", alwaysFalse);
 
-        List<Car> result = RacingGame.executeOnce(List.of(pobi, crong));
+        List<Car> result = racingGame.executeOnce(List.of(pobi, crong));
 
         // 참조는 그대로이고 상태(position)가 변경되어야 한다
         assertSame(pobi, result.get(0));
@@ -44,7 +45,7 @@ class RacingGameTest {
     @Test
     @DisplayName("빈 리스트를 입력하면 빈 리스트를 반환한다")
     void executeOnceWithEmptyListReturnsEmpty() {
-        List<Car> result = RacingGame.executeOnce(List.of());
+        List<Car> result = racingGame.executeOnce(List.of());
         assertTrue(result.isEmpty());
     }
 }

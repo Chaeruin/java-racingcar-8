@@ -12,6 +12,7 @@ class JudgmentTest {
 
     private final NumberGenerator alwaysTrue = () -> 9;
     private final NumberGenerator alwaysFalse = () -> 0;
+    private final Judgment judgment = new Judgment();
 
     @Test
     @DisplayName("단일 우승자 반환 (move로 위치 변경하여 최고 위치 결정)")
@@ -25,7 +26,7 @@ class JudgmentTest {
         pobi.moveForward();
         crong.moveForward();
 
-        List<Car> winners = Judgment.getWinners(List.of(pobi, crong, honux));
+        List<Car> winners = judgment.getWinners(List.of(pobi, crong, honux));
 
         assertEquals(1, winners.size());
         assertEquals("pobi", winners.get(0).getName());
@@ -45,8 +46,8 @@ class JudgmentTest {
         crong.moveForward();
         honux.moveForward();
 
-        List<Car> winners = Judgment.getWinners(List.of(pobi, crong, honux));
-        List<String> winnerNames = Judgment.getWinnersName(winners);
+        List<Car> winners = judgment.getWinners(List.of(pobi, crong, honux));
+        List<String> winnerNames = judgment.getWinnersName(winners);
 
         assertEquals(2, winners.size());
         assertEquals(List.of("pobi", "crong"), winnerNames);
@@ -63,8 +64,8 @@ class JudgmentTest {
         crong.moveForward();
         honux.moveForward();
 
-        List<Car> winners = Judgment.getWinners(List.of(pobi, crong, honux));
-        List<String> names = Judgment.getWinnersName(winners);
+        List<Car> winners = judgment.getWinners(List.of(pobi, crong, honux));
+        List<String> names = judgment.getWinnersName(winners);
 
         assertEquals(3, winners.size());
         assertEquals(List.of("pobi", "crong", "honux"), names);
@@ -73,8 +74,8 @@ class JudgmentTest {
     @Test
     @DisplayName("빈 리스트 입력 시 빈 리스트 반환")
     void emptyInputReturnsEmpty() {
-        List<Car> winners = Judgment.getWinners(List.of());
-        List<String> names = Judgment.getWinnersName(List.of());
+        List<Car> winners = judgment.getWinners(List.of());
+        List<String> names = judgment.getWinnersName(List.of());
 
         assertTrue(winners.isEmpty());
         assertTrue(names.isEmpty());
