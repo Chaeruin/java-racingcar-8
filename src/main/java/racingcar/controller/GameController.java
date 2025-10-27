@@ -12,19 +12,23 @@ public class GameController {
 
     private final InputView inputView;
     private final OutputView outputView;
+    private final Judgment judgment;
+    private final RacingGame racingGame;
 
-    public GameController(InputView inputView, OutputView outputView) {
+    public GameController(InputView inputView, OutputView outputView, Judgment judgment, RacingGame racingGame) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.judgment = judgment;
+        this.racingGame = racingGame;
     }
 
     public void run() {
         try {
-            List<Car> cars = RacingGame.createCars(InputParser.parseCarNames(inputView.getCarNames()));
+            List<Car> cars = racingGame.createCars(InputParser.parseCarNames(inputView.getCarNames()));
             int number = inputView.getNumber();
             outputView.printStart();
             executeRacing(number, cars);
-            List<String> winners = Judgment.getWinnersName(Judgment.getWinners(cars));
+            List<String> winners = judgment.getWinnersName(judgment.getWinners(cars));
             outputView.printWinners(winners);
         } finally {
             inputView.consoleClose();
@@ -33,7 +37,7 @@ public class GameController {
 
     private void executeRacing(int number, List<Car> cars) {
         for (int i = 0; i < number; i++) {
-            cars = RacingGame.executeOnce(cars);
+            cars = racingGame.executeOnce(cars);
             outputView.printExecutionOnce(cars);
         }
     }
