@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 class CarTest {
 
+    private final NumberGenerator alwaysTrue = () -> 9;
+
     @Test
     @DisplayName("정상 이름으로 생성하면 이름과 초기 위치가 설정된다")
     void createCarWithValidName() {
@@ -19,7 +21,8 @@ class CarTest {
     @Test
     @DisplayName("moveForward일 때 위치가 1 증가한다")
     void moveBehavior() {
-        Car car = new Car("pobi", new RandomNumberGenerator());
+
+        Car car = new Car("pobi", alwaysTrue);
 
         car.moveForward();
         assertEquals(1, car.getPosition());
